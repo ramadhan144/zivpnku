@@ -31,7 +31,7 @@ Jika Anda ingin menggunakan **Paid Bot**, Anda wajib memiliki akun Pakasir.
 Jalankan perintah berikut di terminal VPS Anda (sebagai root):
 
 ```bash
-wget -q https://raw.githubusercontent.com/AutoFTbot/ZiVPN/main/install.sh && chmod +x install.sh && ./install.sh
+wget -q https://raw.githubusercontent.com/ramadhan144/zivpnku/main/install.sh && chmod +x install.sh && ./install.sh
 ```
 
 ### Konfigurasi Saat Instalasi
@@ -86,9 +86,9 @@ Jika Anda mengaktifkan bot, Anda bisa mengelola VPN langsung dari chat Telegram.
 
 ## 🔌 API Documentation
 
-API berjalan di port `8080`. Gunakan **API Key** yang Anda atur saat instalasi pada header `X-API-Key`.
+API berjalan di port `9090`. Gunakan **API Key** yang Anda atur saat instalasi pada header `X-API-Key`.
 
-**Base URL**: `http://<IP-VPS>:8080`
+**Base URL**: `http://<IP-VPS>:9090`
 **Header**: `X-API-Key: <YOUR-API-KEY>`
 
 ### 1. Create User
@@ -188,7 +188,7 @@ Jika Anda melihat log seperti:
 
 ### 4. Service Gagal Start
 *   Cek status: `systemctl status zivpn`
-*   Pastikan port `5667` (UDP) dan `8080` (TCP) tidak terpakai aplikasi lain.
+*   Pastikan port `5667` (UDP) dan `9090` (TCP) tidak terpakai aplikasi lain.
 *   Cek config: `cat /etc/zivpn/config.json`
 
 ---
@@ -198,5 +198,5 @@ Jika Anda melihat log seperti:
 Untuk menghapus ZiVPN, API, Bot, dan semua konfigurasi:
 
 ```bash
-wget -q https://raw.githubusercontent.com/AutoFTbot/ZiVPN/main/uninstall.sh && chmod +x uninstall.sh && ./uninstall.sh
+wget -q https://raw.githubusercontent.com/ramadhan144/zivpnku/main/uninstall.sh && chmod +x uninstall.sh && ./uninstall.sh
 ```
