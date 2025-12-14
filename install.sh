@@ -88,9 +88,9 @@ run_silent "Downloading Core" "wget -q https://github.com/zahidbd2/udp-zivpn/rel
 mkdir -p /etc/zivpn
 echo "$domain" > /etc/zivpn/domain
 echo "$api_key" > /etc/zivpn/apikey
-run_silent "Configuring" "wget -q https://raw.githubusercontent.com/AutoFTbot/ZiVPN/main/config.json -O /etc/zivpn/config.json"
+run_silent "Configuring" "wget -q https://raw.githubusercontent.com/ramadhan144/zivpnku/main/config.json -O /etc/zivpn/config.json"
 
-run_silent "Generating SSL" "openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj '/C=ID/ST=Jawa Barat/L=Bandung/O=AutoFTbot/OU=IT Department/CN=$domain' -keyout /etc/zivpn/zivpn.key -out /etc/zivpn/zivpn.crt"
+run_silent "Generating SSL" "openssl req -new -newkey rsa:4096 -days 365 -nodes -x509 -subj '/C=ID/ST=Jawa Barat/L=Bandung/O=ramadhan144/OU=IT Department/CN=$domain' -keyout /etc/zivpn/zivpn.key -out /etc/zivpn/zivpn.crt"
 
 cat >> /etc/sysctl.conf <<END
 net.core.default_qdisc=fq
@@ -132,7 +132,7 @@ WantedBy=multi-user.target
 EOF
 
 mkdir -p /etc/zivpn/api
-run_silent "Setting up API" "wget -q https://raw.githubusercontent.com/AutoFTbot/ZiVPN/main/zivpn-api.go -O /etc/zivpn/api/zivpn-api.go && wget -q https://raw.githubusercontent.com/AutoFTbot/ZiVPN/main/go.mod -O /etc/zivpn/api/go.mod"
+run_silent "Setting up API" "wget -q https://raw.githubusercontent.com/ramadhan144/zivpnku/main/zivpn-api.go -O /etc/zivpn/api/zivpn-api.go && wget -q https://raw.githubusercontent.com/ramadhan144/zivpnku/main/go.mod -O /etc/zivpn/api/go.mod"
 
 cd /etc/zivpn/api
 if go build -o zivpn-api zivpn-api.go &>/dev/null; then
@@ -189,7 +189,7 @@ if [[ -n "$bot_token" ]] && [[ -n "$admin_id" ]]; then
     bot_file="zivpn-bot.go"
   fi
   
-  run_silent "Downloading Bot" "wget -q https://raw.githubusercontent.com/AutoFTbot/ZiVPN/main/$bot_file -O /etc/zivpn/api/$bot_file"
+  run_silent "Downloading Bot" "wget -q https://raw.githubusercontent.com/ramadhan144/zivpnku/main/$bot_file -O /etc/zivpn/api/$bot_file"
   
   cd /etc/zivpn/api
   run_silent "Downloading Bot Deps" "go get github.com/go-telegram-bot-api/telegram-bot-api/v5"
@@ -229,14 +229,14 @@ iface=$(ip -4 route ls | grep default | grep -Po '(?<=dev )(\S+)' | head -1)
 iptables -t nat -A PREROUTING -i "$iface" -p udp --dport 6000:19999 -j DNAT --to-destination :5667 &>/dev/null
 ufw allow 6000:19999/udp &>/dev/null
 ufw allow 5667/udp &>/dev/null
-ufw allow 8080/tcp &>/dev/null
+ufw allow 9090/tcp &>/dev/null
 
 rm -f "$0" install.tmp install.log &>/dev/null
 
 echo ""
 echo -e "${BOLD}Installation Complete${RESET}"
 echo -e "Domain  : ${CYAN}$domain${RESET}"
-echo -e "API     : ${CYAN}Port 8080${RESET}"
+echo -e "API     : ${CYAN}Port 9090${RESET}"
 echo -e "Token   : ${CYAN}$api_key${RESET}"
-echo -e "Dev     : ${CYAN}https://t.me/AutoFTBot${RESET}"
+echo -e "Dev     : ${CYAN}https://t.me/Ramadhann121${RESET}"
 echo ""
