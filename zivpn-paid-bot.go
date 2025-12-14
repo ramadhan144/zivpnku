@@ -21,12 +21,12 @@ import (
 
 const (
 	BotConfigFile = "/etc/zivpn/bot-config.json"
-	ApiUrl        = "http://127.0.0.1:8080/api"
+	ApiUrl        = "http://127.0.0.1:9090/api"
 	ApiKeyFile    = "/etc/zivpn/apikey"
 	DomainFile    = "/etc/zivpn/domain"
 )
 
-var ApiKey = "AutoFtBot-agskjgdvsbdreiWG1234512SDKrqw"
+var ApiKey = "ramadhan144-agskjgdvsbdreiWG1234512SDKrqw"
 
 type BotConfig struct {
 	BotToken      string `json:"bot_token"`
