@@ -32,7 +32,7 @@ run_silent() {
 
 clear
 echo -e "${BOLD}ZiVPN IPtables Fixer${RESET}"
-echo -e "${GRAY}AutoFTbot Edition${RESET}"
+echo -e "${GRAY}ramadhan144 Edition${RESET}"
 echo ""
 
 iface=$(ip -4 route ls | grep default | grep -Po '(?<=dev )(\S+)' | head -1)
